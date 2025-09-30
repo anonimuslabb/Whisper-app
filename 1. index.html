@@ -1,139 +1,131 @@
-{\rtf1\ansi\ansicpg1250\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔮 Whisper - Anonymní zprávy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#059669">
+</head>
+<body>
+    <div id="app">
+        <div id="auth-view" class="view active">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>🔮 Whisper</h1>
+                        <p>Bezpečné anonymní zprávy</p>
+                        <div class="auth-toggle">
+                            <button class="auth-btn active" data-mode="login">Přihlášení</button>
+                            <button class="auth-btn" data-mode="register">Registrace</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form id="login-form" class="auth-form">
+                            <div class="form-group">
+                                <label>Uživatelské jméno</label>
+                                <input type="text" id="login-username" value="admin" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Heslo</label>
+                                <input type="password" id="login-password" value="heslo123" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">🔑 Přihlásit</button>
+                        </form>
+                        <form id="register-form" class="auth-form hidden">
+                            <div class="form-group">
+                                <label>Uživatelské jméno</label>
+                                <input type="text" id="reg-username" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Heslo</label>
+                                <input type="password" id="reg-password" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Potvrdit heslo</label>
+                                <input type="password" id="reg-confirm" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email (volitelné)</label>
+                                <input type="email" id="reg-email">
+                            </div>
+                            <button type="submit" class="btn btn-primary">👤 Registrovat</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-\f0\fs24 \cf0 <!DOCTYPE html>\
-<html lang="cs">\
-<head>\
-    <meta charset="UTF-8">\
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
-    <title>\uc0\u55357 \u56622  Whisper - Anonymn\'ed zpr\'e1vy</title>\
-    <link rel="stylesheet" href="style.css">\
-    <link rel="manifest" href="manifest.json">\
-    <meta name="theme-color" content="#059669">\
-</head>\
-<body>\
-    <div id="app">\
-        <div id="auth-view" class="view active">\
-            <div class="container">\
-                <div class="card">\
-                    <div class="card-header">\
-                        <h1>\uc0\u55357 \u56622  Whisper</h1>\
-                        <p>Bezpe\uc0\u269 n\'e9 anonymn\'ed zpr\'e1vy</p>\
-                        <div class="auth-toggle">\
-                            <button class="auth-btn active" data-mode="login">P\uc0\u345 ihl\'e1\'9aen\'ed</button>\
-                            <button class="auth-btn" data-mode="register">Registrace</button>\
-                        </div>\
-                    </div>\
-                    <div class="card-body">\
-                        <form id="login-form" class="auth-form">\
-                            <div class="form-group">\
-                                <label>U\'9eivatelsk\'e9 jm\'e9no</label>\
-                                <input type="text" id="login-username" value="admin" required>\
-                            </div>\
-                            <div class="form-group">\
-                                <label>Heslo</label>\
-                                <input type="password" id="login-password" value="heslo123" required>\
-                            </div>\
-                            <button type="submit" class="btn btn-primary">\uc0\u55357 \u56593  P\u345 ihl\'e1sit</button>\
-                        </form>\
-                        <form id="register-form" class="auth-form hidden">\
-                            <div class="form-group">\
-                                <label>U\'9eivatelsk\'e9 jm\'e9no</label>\
-                                <input type="text" id="reg-username" required>\
-                            </div>\
-                            <div class="form-group">\
-                                <label>Heslo</label>\
-                                <input type="password" id="reg-password" required>\
-                            </div>\
-                            <div class="form-group">\
-                                <label>Potvrdit heslo</label>\
-                                <input type="password" id="reg-confirm" required>\
-                            </div>\
-                            <div class="form-group">\
-                                <label>Email (voliteln\'e9)</label>\
-                                <input type="email" id="reg-email">\
-                            </div>\
-                            <button type="submit" class="btn btn-primary">\uc0\u55357 \u56420  Registrovat</button>\
-                        </form>\
-                    </div>\
-                </div>\
-            </div>\
-        </div>\
-\
-        <div id="dashboard-view" class="view">\
-            <div class="container">\
-                <div class="card">\
-                    <div class="card-header">\
-                        <h1>\uc0\u55356 \u57312  Dashboard</h1>\
-                        <button id="logout-btn" class="btn btn-outline">Odhl\'e1sit</button>\
-                    </div>\
-                    <nav class="navigation">\
-                        <button class="nav-btn active" onclick="showTab('dashboard')">Dashboard</button>\
-                        <button class="nav-btn" onclick="showTab('create')">Nov\'fd odkaz</button>\
-                        <button class="nav-btn" onclick="showTab('links')">Moje odkazy</button>\
-                        <button class="nav-btn" onclick="showTab('messages')">Zpr\'e1vy</button>\
-                        <button class="nav-btn" onclick="showTab('settings')">Nastaven\'ed</button>\
-                    </nav>\
-                    <div class="card-body">\
-                        <div id="dashboard-tab" class="tab-content">\
-                            <div class="stats">\
-                                <div class="stat-card">\
-                                    <div class="stat-number" id="total-links">0</div>\
-                                    <div class="stat-title">Celkem odkaz\uc0\u367 </div>\
-                                </div>\
-                                <div class="stat-card">\
-                                    <div class="stat-number" id="total-messages">0</div>\
-                                    <div class="stat-title">Zpr\'e1v</div>\
-                                </div>\
-                                <div class="stat-card">\
-                                    <div class="stat-number" id="active-links">0</div>\
-                                    <div class="stat-title">Aktivn\'edch</div>\
-                                </div>\
-                            </div>\
-                        </div>\
-                        <div id="create-tab" class="tab-content hidden">\
-                            <h2>\uc0\u10024  Vytvo\u345 it nov\'fd odkaz</h2>\
-                            <form id="create-form">\
-                                <div class="form-group">\
-                                    <label>N\'e1zev odkazu</label>\
-                                    <input type="text" id="link-name" placeholder="nap\uc0\u345 . Anonymn\'ed feedback" required>\
-                                </div>\
-                                <div class="form-group">\
-                                    <label>Efekty (voliteln\'e9)</label>\
-                                    <div class="effects-checkboxes">\
-                                        <label><input type="checkbox" value="SPARKLE"> \uc0\u10024  SPARKLE</label>\
-                                        <label><input type="checkbox" value="GLOW"> \uc0\u55357 \u56491  GLOW</label>\
-                                        <label><input type="checkbox" value="RAINBOW"> \uc0\u55356 \u57096  RAINBOW</label>\
-                                        <label><input type="checkbox" value="HEARTS"> \uc0\u55357 \u56470  HEARTS</label>\
-                                    </div>\
-                                </div>\
-                                <button type="submit" class="btn btn-primary">\uc0\u55357 \u56599  Vytvo\u345 it odkaz</button>\
-                            </form>\
-                        </div>\
-                        <div id="links-tab" class="tab-content hidden">\
-                            <h2>\uc0\u55357 \u56599  Moje odkazy</h2>\
-                            <div id="links-list"></div>\
-                        </div>\
-                        <div id="messages-tab" class="tab-content hidden">\
-                            <h2>\uc0\u55357 \u56492  P\u345 ijat\'e9 zpr\'e1vy</h2>\
-                            <div id="messages-list"></div>\
-                        </div>\
-                        <div id="settings-tab" class="tab-content hidden">\
-                            <h2>\uc0\u9881 \u65039  Nastaven\'ed</h2>\
-                            <div id="settings-content"></div>\
-                        </div>\
-                    </div>\
-                </div>\
-            </div>\
-        </div>\
-    </div>\
-    <div id="notifications"></div>\
-    <script src="app.js"></script>\
-    <script>setInterval(checkForNewMessages, 30000);</script>\
-</body>\
-</html>\
-}
+        <div id="dashboard-view" class="view">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>🏠 Dashboard</h1>
+                        <button id="logout-btn" class="btn btn-outline">Odhlásit</button>
+                    </div>
+                    <nav class="navigation">
+                        <button class="nav-btn active" onclick="showTab('dashboard')">Dashboard</button>
+                        <button class="nav-btn" onclick="showTab('create')">Nový odkaz</button>
+                        <button class="nav-btn" onclick="showTab('links')">Moje odkazy</button>
+                        <button class="nav-btn" onclick="showTab('messages')">Zprávy</button>
+                        <button class="nav-btn" onclick="showTab('settings')">Nastavení</button>
+                    </nav>
+                    <div class="card-body">
+                        <div id="dashboard-tab" class="tab-content">
+                            <div class="stats">
+                                <div class="stat-card">
+                                    <div class="stat-number" id="total-links">0</div>
+                                    <div class="stat-title">Celkem odkazů</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number" id="total-messages">0</div>
+                                    <div class="stat-title">Zpráv</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number" id="active-links">0</div>
+                                    <div class="stat-title">Aktivních</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="create-tab" class="tab-content hidden">
+                            <h2>✨ Vytvořit nový odkaz</h2>
+                            <form id="create-form">
+                                <div class="form-group">
+                                    <label>Název odkazu</label>
+                                    <input type="text" id="link-name" placeholder="např. Anonymní feedback" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Efekty (volitelné)</label>
+                                    <div class="effects-checkboxes">
+                                        <label><input type="checkbox" value="SPARKLE"> ✨ SPARKLE</label>
+                                        <label><input type="checkbox" value="GLOW"> 💫 GLOW</label>
+                                        <label><input type="checkbox" value="RAINBOW"> 🌈 RAINBOW</label>
+                                        <label><input type="checkbox" value="HEARTS"> 💖 HEARTS</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">🔗 Vytvořit odkaz</button>
+                            </form>
+                        </div>
+                        <div id="links-tab" class="tab-content hidden">
+                            <h2>🔗 Moje odkazy</h2>
+                            <div id="links-list"></div>
+                        </div>
+                        <div id="messages-tab" class="tab-content hidden">
+                            <h2>💬 Přijaté zprávy</h2>
+                            <div id="messages-list"></div>
+                        </div>
+                        <div id="settings-tab" class="tab-content hidden">
+                            <h2>⚙️ Nastavení</h2>
+                            <div id="settings-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="notifications"></div>
+    <script src="app.js"></script>
+    <script>setInterval(checkForNewMessages, 30000);</script>
+</body>
+</html>
